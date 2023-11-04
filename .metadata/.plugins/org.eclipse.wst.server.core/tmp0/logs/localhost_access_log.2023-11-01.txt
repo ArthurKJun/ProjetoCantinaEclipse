@@ -1,0 +1,17 @@
+127.0.0.1 - - [01/Nov/2023:21:36:51 -0300] "GET / HTTP/1.1" 404 764
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:36:54 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:36:55 -0300] "GET /arsan/Estilos/style.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:36:56 -0300] "GET /favicon.ico HTTP/1.1" 404 775
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:36:58 -0300] "GET /arsan/cadastroProduto.jsp HTTP/1.1" 200 1132
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:58:17 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:58:22 -0300] "GET /arsan/cadastroProduto.jsp HTTP/1.1" 200 1708
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:58:50 -0300] "GET /arsan/gravarProduto.jsp?nome=Pastel+de+Carne&preco=3%2C50&quantidade=20 HTTP/1.1" 500 2275
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:59:46 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:59:49 -0300] "GET /arsan/cadastroProduto.jsp HTTP/1.1" 200 1710
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:21:59:57 -0300] "GET /arsan/gravarProduto.jsp?nome=Pastel+de+Carne&preco=3%2C50&quantidade=20 HTTP/1.1" 500 2275
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:01:31 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:01:33 -0300] "GET /arsan/cadastroProduto.jsp HTTP/1.1" 200 1710
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:01:37 -0300] "GET /arsan/gravarProduto.jsp?nome=Pastel+de+Carne&preco=3%2C50&quantidade=20 HTTP/1.1" 500 2471
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:03:06 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:03:08 -0300] "GET /arsan/cadastroProduto.jsp HTTP/1.1" 200 1724
+0:0:0:0:0:0:0:1 - - [01/Nov/2023:22:03:12 -0300] "POST /arsan/gravarProduto.jsp?editar=no HTTP/1.1" 200 4

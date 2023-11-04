@@ -1,0 +1,20 @@
+<%@page import="controller.usuarioController"%>
+<%@page import="modelos.Usuario"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="controller.usuarioController"%>
+<%@ page import="javax.swing.JOptionPane"%>
+<%
+String nome = request.getParameter("nome");
+String senha = request.getParameter("senha");
+
+ResultSet usuarios = usuarioController.consultar();
+while (usuarios.next()) {
+	if (nome.equals(usuarios.getString("nome"))) {
+		if (senha.equals(usuarios.getString("senha"))){
+			response.sendRedirect("cadastroUsuario.jsp");
+		}
+	}
+}
+
+
+%>

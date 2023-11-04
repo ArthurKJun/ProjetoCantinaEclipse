@@ -1,0 +1,8 @@
+package modelos;
+
+public class produto{
+	
+	private int cod_produto;
+	private String nome;
+	
+}

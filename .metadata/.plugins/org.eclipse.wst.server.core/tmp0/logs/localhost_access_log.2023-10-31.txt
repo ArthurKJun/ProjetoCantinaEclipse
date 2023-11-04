@@ -1,0 +1,13 @@
+127.0.0.1 - - [31/Oct/2023:22:30:30 -0300] "GET / HTTP/1.1" 404 764
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:30:34 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:30:34 -0300] "GET /arsan/Estilos/style.css HTTP/1.1" 200 6184
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:30:35 -0300] "GET /favicon.ico HTTP/1.1" 404 775
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:30:41 -0300] "GET /arsan/cadastroCliente.jsp HTTP/1.1" 200 1889
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:30:47 -0300] "POST /arsan/gravarCliente.jsp?editar=no HTTP/1.1" 200 4
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:22:55:08 -0300] "GET /arsan/cadastroFornecedor.jsp HTTP/1.1" 200 1254
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:44:32 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:44:36 -0300] "GET /arsan/cadastroFornecedor.jsp HTTP/1.1" 200 1929
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:44:56 -0300] "GET /arsan/gravarFornecedor.jsp?nome=ana&cnpj=0980909&fone=098098&email=ana%40ana.com HTTP/1.1" 500 2544
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:47:11 -0300] "GET /arsan/entrada.jsp HTTP/1.1" 200 2328
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:47:14 -0300] "GET /arsan/cadastroFornecedor.jsp HTTP/1.1" 200 1943
+0:0:0:0:0:0:0:1 - - [31/Oct/2023:23:47:19 -0300] "POST /arsan/gravarFornecedor.jsp?editar=no HTTP/1.1" 200 4

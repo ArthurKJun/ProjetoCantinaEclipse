@@ -1,0 +1,108 @@
+<%@page import="Modelo.Perfil"%>
+<%@page import="Controler.Perfil_controler"%>
+<%@page import="java.sql.ResultSet"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Perfil</title>
+</head>
+<body>
+	<form method="post" id="fPerfil">
+		<div id="divPerfil">
+			 <label>Selecione um perfil para alterar ou excluir: </label>
+			 <hr>
+			<select id="cbPerfil" name="cbPerfil">
+				<option value="" disabled selected>-- Selecione um perfil --</option>
+			<%
+				ResultSet perfis = Perfil_controler.consultar();
+				while(perfis.next()){
+					out.print("<option value=" + perfis.getInt("cod_perfil") + ">" + perfis.getString("nome_perfil") + "</option>");
+				}
+			%>
+			</select>
+		</div>
+		<div id="divNovo">
+		<h1>Cadastrar novo perfil </h1>
+		<hr>
+		<label>Informe o nome do perfil:</label>
+		 <input id="inpNome" name="inpNome" type="text" placeholder="Informe o nome do perfil">
+		 <hr>
+		 </div>
+		<div id="divPerm">
+			<select id="cbPermissao" name="cbPermissao">
+				<option value="" disabled selected>-- Selecione a permissão
+					</option>
+				<option>Total</option>
+				<option>Leitura</option>
+				<option>Nenhuma</option>
+			</select>
+			<hr>
+		</div>
+		<button onclick="Inserir()">Gravar</button>
+		<button onclick=" Alterar()">Alterar</button>
+		<button onclick="Excluir()">Excluir</button>
+	</form>
+	<script>
+		function Inserir() {
+			let nome = document.getElementById("inpNome");
+			if (nome.value == "") {
+				alert("Informe o nome do perfil");
+				nome.focus();
+				return false;
+			}
+			let perm = document.getElementById("cbPermissao");
+			if (perm.value == "") {
+				alert("Selecione a permissão");
+				perm.focus();
+				return false;
+			}
+				SetAction("inserir");
+				document.getElementById("fPefil").submit();
+			}		
+		
+		function Alterar(){
+			let perf = document.getElementById("cbPerfil");
+			if (perf.value == "") {
+				alert("Selecione o perfil");
+				perf.focus();
+				return false;
+			}
+			let perm = document.getElementById("cbPermissao");
+			if (perm.value == "") {
+				alert("Selecione a permissão");
+				perm.focus();
+				return false;
+			}
+				SetAction("alterar");
+				document.getElementById("fPerfil").submit();
+			}		
+		
+		
+		function Excluir(){
+			let perf = document.getElementById("cbPerfil");
+			if (perf.value == "") {
+				alert("Selecione o perfil");
+				perf.focus();
+				return false;
+			}
+			let perm = document.getElementById("cbPermissao");
+			if (perm.value == "") {
+				alert("Selecione a permissão");
+				perm.focus();
+				return false;
+			}
+				SetAction("excluir");
+				document.getElementById("fPefil").submit();	
+		}
+
+		function SetAction(operacao) {
+			let form = document.getElementById("fPerfil");
+			form.setAttribute("action", "Perfil_Banco.jsp?op=" + operacao);
+		}
+	</script>
+</body>
+</html>
+

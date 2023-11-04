@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\Arthur\Desktop\ProjetoArsan\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+391506094.index
+3464267137.index
+506957511.index
+261567074.index
+1528480138.index
+966191139.index
+800169845.index

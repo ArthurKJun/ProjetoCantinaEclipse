@@ -1,0 +1,106 @@
+package Controler;
+
+import Modelo.Usuario;
+import utils.conexao;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+	public class Usuario_controler {
+	
+	 private static Connection con = conexao.getConexao();
+
+	 
+	public static boolean salvar(Usuario usu) {
+		
+		try {			       	   
+	    	 PreparedStatement smt; 
+		      		   smt = con. prepareStatement("INSERT INTO arsan.usuarios (`nome_usuario`, `email_usuario`, `fone_usuario`, `cod_perfil`) VALUES (?, ?, ?, ?)");
+		    		   smt. setString(1, usu.getNome_usuario());
+			    	   smt. setString(2, usu.getEmail_usuario());   
+			    	   smt. setString(3, usu.getFone_usuario());
+			    	   smt. setInt(4, usu.getCod_perfil());			    	   	    	   	    	   
+			    	   smt. execute();    	   
+		} 
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+				return false;
+		}
+	       { 
+	    	 return false;     
+	       }	     	   
+}
+	
+	public static boolean alterar(int cod, String nome, String email, String fone, int perf) {
+		try {
+			PreparedStatement smt;     		
+	    		   smt = con. prepareStatement("UPDATE arsan.usuarios set nome_usuario = ?, email_usuario = ?, fone_usuario = ?, cod_perfil = ? where cod_usuario = ?");
+	    		   smt. setString(1, nome);
+	    	 	   smt. setString(2, email); 
+	    	 	   smt. setString(3, fone);
+	    	 	   smt. setInt(4, perf);
+	    	 	   smt. setInt(5, cod);
+	    		   smt. execute();    	   
+		} 
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+	       { 
+	    	 return false;     
+	       }
+	}
+				
+	public static boolean excluir(int cod) {
+        try {
+     	   PreparedStatement stm = con.prepareStatement("DELETE from arsan.usuarios where cod_usuario = ?");
+     	   stm.setInt(1, cod);
+     	   stm.execute();
+        }
+        catch(Exception e) {
+     	   System.err.println(e.getMessage());
+     	   return false;
+        }    	
+        return true;	
+     }
+	
+	
+	public static ResultSet consultar() {
+		ResultSet rs = null;
+		try {
+			PreparedStatement stm = con.prepareStatement("SELECT * from arsan.usuarios");
+			rs = stm.executeQuery();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());   
+			
+		}
+		return rs;
+	}
+	
+		
+		public static Usuario consultar(int cod) {
+	   	 Usuario usu = null;
+	       try {
+	    	   PreparedStatement stm = con.prepareStatement("SELECT * from arsan.usuarios where cod_usuario = ?");
+	    	   stm.setInt(1, cod);
+	    	   ResultSet rs = stm.executeQuery();
+	    	   if(rs.next()) {
+	    		 usu = new Usuario(rs.getInt("cod_usuario"), rs.getString("nome_usuario"), rs.getString("email_usuario"), rs.getString("fone_usuario"), rs.getInt("cod_perfil")); 
+	    	   }
+	       }
+	       catch(Exception e) {
+	    	   System.err.println(e.getMessage());     	   
+	       }    	
+	       return usu;	
+	    }
+	
+	
+	
+	
+	
+	
+	
+}
+	   			
+

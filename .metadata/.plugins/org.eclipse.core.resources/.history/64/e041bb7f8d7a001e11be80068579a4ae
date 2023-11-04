@@ -1,0 +1,143 @@
+<%@page import="Controler.Usuario_controler"%>
+<%@page import="Controler.Perfil_controler"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="Modelo.Usuario"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Usuários</title>
+</head>
+<body>
+    <form method="post" id="fUsuario">
+    	<div id="divUsuario">
+  			<label>Selecione um usuário para alterar ou excluir: </label>
+  			<hr>
+			<select id="cbUsuario" name="cbUsuario">
+				<option value="" disabled selected>-- Selecione um usuário --</option>
+			<%
+				ResultSet usuarios = Usuario_controler.consultar();
+				while(usuarios.next()){
+					out.print("<option value=" + usuarios.getInt("cod_usuario") + ">" + usuarios.getString("nome_usuario") + "</option>");
+				}
+			%>
+			</select>
+		</div>
+		<div id="divNovo">
+			<h1>Cadastrar novo Usuário</h1>
+			<hr>
+			<label>Informe seu nome:</label>
+			<input id="inpNome" name="inpNome" type="text" placeholder="Informe seu nome">
+			<hr>
+			<label>Informe seu email:</label>
+			<input id="inpEmail" name="inpEmail" type="text" placeholder="Informe seu email">
+			<hr>
+			<label>Informe seu telefone:</label>
+			<input id="inpFone" name="inpFone" type="text" placeholder="Informe seu telefone">
+			<hr>
+			<label>Selecione um perfil: </label>
+				<select id="cbPerfil" name="cbPerfil">
+					<option value="" disabled selected>-- Selecione um perfil --</option>
+					<%
+						ResultSet perfis = Perfil_controler.consultar();
+							while(perfis.next()){
+								out.print("<option value=" + perfis.getInt("cod_perfil") + ">" + perfis.getString("nome_perfil") + "</option>");
+							}
+					%>
+				</select>
+				<hr>
+		</div>  	   	   
+    		<button onclick="Inserir()">Gravar</button>		
+    		<button onclick="Alterar()">Alterar</button>
+    		<button onclick="Excluir()">Excluir</button>
+	</form>	  
+	<script>
+	function Inserir(){
+		let nome = document.getElementById("inpNome");
+		if (nome.value == "") {
+			alert("Informe o nome do usuário");
+			nome.focus();
+			return false;
+		}
+		let email = document.getElementById("inpEmail");
+		if (email.value == "") {
+			alert("Informe o email do usuário");
+			email.focus();
+			return false;
+		}
+		let fone = document.getElementById("inpFone");
+		if (fone.value == "") {
+			alert("Informe o telefone do usário");
+			fone.focus();
+			return false;
+		}
+		let perf = document.getElementById("cbPerfil");
+		if (perf.value == "") {
+			alert("Selecione um perfil");
+			perf.focus();
+			return false;
+		}
+		SetAction("inserir");
+		document.getElementById("fUsuario").submit();
+	}	
+		
+		
+		function Alterar(){
+			let usu = document.getElementById("cbUsuario");
+			if (usu.value == "") {
+				alert("Selecione um usuário");
+				usu.focus();
+				return false;
+			}
+			let nome = document.getElementById("inpNome");
+			if (nome.value == "") {
+				alert("Informe o nome do usuário");
+				nome.focus();
+				return false;
+			}
+			let email = document.getElementById("inpEmail");
+			if (email.value == "") {
+				alert("Informe o email do usuário");
+				email.focus();
+				return false;
+			}
+			let fone = document.getElementById("inpFone");
+			if (fone.value == "") {
+				alert("Informe o telefone do usário");
+				fone.focus();
+				return false;
+			}
+			let perf = document.getElementById("cbPerfil");
+			if (perf.value == "") {
+				alert("Selecione o perfil");
+				
+				perf.focus();
+				return false;
+			}
+			SetAction("alterar");
+			document.getElementById("fUsuario").submit();
+			
+		}
+			
+			
+			function Excluir(){
+				let usu = document.getElementById("cbUsuario");
+				if (usu.value == "") {
+					alert("Selecione um usuário");
+					usu.focus();
+					return false;
+				}
+			SetAction("excluir");
+			document.getElementById("fUsuario").submit();
+				
+			}
+						
+	function SetAction(operacao) {
+		let form = document.getElementById("fUsuario");
+		form.setAttribute("action", "Usuario_Banco.jsp?op=" + operacao);
+	}
+		</script>  
+</body>
+</html>

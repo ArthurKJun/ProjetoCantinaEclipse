@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="ISO-8859-1">   
+    
+    <link rel="stylesheet" href="./Estilos/style.css">
+    
+    <title>Arsan Food Management</title>
+
+</head>
+<body>
+	
+	<div class="container-geral">
+        <div class="logo-container">
+            <img src="./img/logo 1.png" alt="Arsan food Management">
+        </div>
+
+        <div id="form-container">
+
+            <div id="form-inner">
+
+                <form id="register-form">
+                    <h3>Login</h3>
+                    <div id="name-container">
+
+                        <input type="text" name="login" id="login" placeholder="Login">
+
+                    </div>
+
+                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <input type="submit" value="Entrar" onclick="logar()">
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,6 @@
+INDEX VERSION 1.134+C:\Users\Arthur\Desktop\ProjetoArsan\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+800169845.index
+290294900.index
+3533838233.index
+3773490477.index

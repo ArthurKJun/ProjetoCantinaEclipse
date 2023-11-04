@@ -1,0 +1,97 @@
+package Controler;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import Modelo.Perfil;
+import utils.conexao;
+
+public class Perfil_controler {
+	
+	private static Connection con = conexao.getConexao();
+
+	public static boolean salvar(Perfil perf) {
+				try {
+				PreparedStatement smt; 
+		    		   smt = con. prepareStatement("INSERT INTO arsan.perfil (`nome_perfil`, `permissao`) VALUES (?, ?)");
+		    		   smt. setString(1, perf.getNome_perfil());   
+			    	   smt. setString(2, perf.getPermissao()); 
+			    	   smt. execute();    	   
+			} 
+			catch (Exception e) {
+				System.err.println(e.getMessage());
+				return false;
+			}
+			 { 
+		    	 return false;     
+		       }
+	}
+	
+	
+	
+	public static boolean alterar(int cod, String perm) {
+		try {
+			PreparedStatement smt;     		
+	    		   smt = con. prepareStatement("UPDATE arsan.perfil set permissao = ? where cod_perfil = ?");
+	    		   smt. setString(1, perm);
+	    		   smt. setInt(2, cod);
+	    		   smt. execute();    	   
+		} 
+		catch (Exception e) {
+			System.err.println(e.getMessage());
+			return false;
+		}
+	       { 
+	    	 return false;     
+	       }
+	}
+	
+	
+		
+	public static boolean excluir(int cod) {
+        try {
+     	   PreparedStatement stm = con.prepareStatement("DELETE from arsan.perfil where cod_perfil =  ?");
+     	   stm.setInt(1, cod);
+     	   stm.execute();
+        }
+        catch(Exception e) {
+     	   System.err.println(e.getMessage());
+     	   return false;
+        }    	
+        return true;	
+     }
+	
+	
+		
+	public static ResultSet consultar() {
+    	ResultSet rs = null;
+        try {
+     	   PreparedStatement stm = con.prepareStatement("SELECT * from arsan.perfil");
+     	   rs = stm.executeQuery();
+        }
+        catch(Exception e) {
+     	   System.err.println(e.getMessage());     	   
+        }    	
+        return rs;	
+     }
+	
+		
+	
+	public static Perfil consultar(int cod) {
+   	 Perfil perf = null;
+       try {
+    	   PreparedStatement stm = con.prepareStatement("SELECT * from arsan.perfil where cod_perfil = ?");
+    	   stm.setInt(1, cod);
+    	   ResultSet rs = stm.executeQuery();
+    	   if(rs.next()) {
+    		 perf = new Perfil(rs.getInt("cod_perfil"), rs.getString("nome_perfil"), rs.getString("permissao")); 
+    	   }
+       }
+       catch(Exception e) {
+    	   System.err.println(e.getMessage());     	   
+       }    	
+       return perf;	
+    }
+}
+			  		  
+		      
